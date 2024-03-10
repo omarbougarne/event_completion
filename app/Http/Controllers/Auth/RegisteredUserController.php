@@ -43,7 +43,6 @@ class RegisteredUserController extends Controller
         'name' => $request->name,
         'email' => $request->email,
         'password' => Hash::make($request->password),
-        'role' => $request->role, // Assign the role from the form
     ]);
 
     // Log in the user after registration
