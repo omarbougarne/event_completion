@@ -2,7 +2,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -20,14 +19,9 @@ class AuthenticatedSessionController extends Controller
     public function create()
 {
     // Check if a user is authenticated
-    if (Auth::check()) {
-        // Determine the user's role
-        $userRole = Auth::user()->role;
-        // Pass the role to the view
-        return view('auth.login', compact('userRole'));
-    } else {
+
         return view('auth.login');
-    }
+
 }
 
 
@@ -69,4 +63,3 @@ class AuthenticatedSessionController extends Controller
     return redirect('/');
 }
 }
-

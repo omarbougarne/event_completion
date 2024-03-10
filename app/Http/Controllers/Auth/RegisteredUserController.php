@@ -35,7 +35,6 @@ class RegisteredUserController extends Controller
         'name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string|confirmed|min:8',
-        'role' => ['required', Rule::in(['user', 'organiser'])], // Ensure the role is one of the allowed values
     ]);
 
     // Create the user with the provided data
@@ -50,4 +49,5 @@ class RegisteredUserController extends Controller
 
     return redirect(RouteServiceProvider::HOME);
 }
+
 }
