@@ -15,14 +15,20 @@ class AuthenticatedSessionController extends Controller
      *
      * @return \Illuminate\View\View
      */
+
     public function create()
-    {
+{
+    // Check if a user is authenticated
+    if (Auth::check()) {
         // Determine the user's role
         $userRole = Auth::user()->role;
-
         // Pass the role to the view
         return view('auth.login', compact('userRole'));
+    } else {
+        return view('auth.login');
     }
+}
+
 
     /**
      * Handle an incoming authentication request.
